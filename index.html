@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopSmart 🛍️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>ShopSmart 🛍️</h1>
+    <input type="text" id="searchInput" placeholder="Search products...">
+    <button id="themeToggle">🌙</button>
+    <a href="cart.html" id="cartIcon">🛒 <span id="cartCount">0</span></a>
+  </header>
+
+  <nav class="navbar">
+    <a href="#">Home</a>
+    <a href="#">Shop</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="filters">
+    <button class="filter-btn" data-category="all">All</button>
+    <button class="filter-btn" data-category="electronics">Electronics</button>
+    <button class="filter-btn" data-category="fashion">Fashion</button>
+    <button class="filter-btn" data-category="books">Books</button>
+  </div>
+
+  <main id="productContainer" class="product-container"></main>
+
+  <footer>
+    <p>© 2025 ShopSmart. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🛒 My Cart</h1>
+    <a href="index.html" class="back">⬅ Back to Shop</a>
+  </header>
+
+  <main id="cartItems" class="product-container"></main>
+  <div id="cartTotal" style="text-align:center; font-size:1.2rem; margin:1rem;"></div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const container = document.getElementById("cartItems");
+    const totalDiv = document.getElementById("cartTotal");
+
+    function displayCart() {
+      container.innerHTML = "";
+      if (cart.length === 0) {
+        container.innerHTML = "<h2 style='text-align:center;'>Your cart is empty 🛍️</h2>";
+        totalDiv.textContent = "";
+        return;
+      }
+
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+          <img src="${item.img}" alt="${item.name}">
+          <h3>${item.name}</h3>
+          <p>₹${item.price}</p>
+          <button onclick="removeItem(${index})">Remove</button>
+        `;
+        container.appendChild(card);
+      });
+      totalDiv.textContent = `Total Price: ₹${total}`;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+    }
+
+    displayCart();
+  </script>
+</body>
+</html>
